@@ -3,6 +3,7 @@ name: alert submodule alteration
 on:
   push:
   repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   ping-opng:
