@@ -1,0 +1,16 @@
+name: alert submodule alteration
+
+on:
+  push:
+  repository_dispatch:
+
+jobs:
+  ping-opng:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ping
+        run: |
+          curl: -X POST https://api.github.com/repos/PedrooMachado23/git-training/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.PING_TOKEN }} \
+          --data '{"event_type": "ping", "client_payload": {"repossitory": "'"GITHUB_REPOSITORY"'"}}'
